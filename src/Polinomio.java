@@ -268,33 +268,33 @@ public class Polinomio {
     public static Polinomio dividir(Polinomio p1, Polinomio p2) {
         if (p2.getCabeza() == null) {
             JOptionPane.showMessageDialog(null, "La división por 0 no es legal");
-            return null; // Cambié la firma para reflejar que podría devolver null
+            return null; 
         }
     
         Polinomio cociente = new Polinomio();
         Polinomio residuo = new Polinomio();
         
-        // Copia el polinomio p1 al residuo
+        
         Nodo apuntadorInicial = p1.getCabeza();
         while (apuntadorInicial != null) {
             residuo.agregar(new Nodo(apuntadorInicial.getCoeficiente(), apuntadorInicial.getExponente()));
             apuntadorInicial = apuntadorInicial.siguiente;
         }
     
-        // Mientras el residuo siga teniendo términos >= polinomio divisor
+        
         while (residuo.getCabeza() != null && residuo.getCabeza().getExponente() >= p2.getCabeza().getExponente()) {
-            // Calcula el término del cociente
+            
             double coeficienteCociente = residuo.getCabeza().getCoeficiente() / p2.getCabeza().getCoeficiente();
             int exponenteCociente = residuo.getCabeza().getExponente() - p2.getCabeza().getExponente();
     
-            // Agregar el nuevo término del cociente
+           
             if (exponenteCociente >= 0) {
                 Nodo nuevoTermino = new Nodo(coeficienteCociente, exponenteCociente);
                 cociente.agregar(nuevoTermino);
     
                 Polinomio producto = multiplicar_monomio(p2, nuevoTermino);
-                residuo = restar(residuo, producto); // Actualiza el residuo
-                // Puedes depurar aquí si es necesario
+                residuo = restar(residuo, producto); 
+                
             } else {
                 break;
             }
@@ -309,33 +309,33 @@ public class Polinomio {
     public static Polinomio residuo(Polinomio p1, Polinomio p2) {
         if (p2.getCabeza() == null) {
             JOptionPane.showMessageDialog(null, "La división por 0 no es legal");
-            return null; // Cambié la firma para reflejar que podría devolver null
+            return null; 
         }
     
         Polinomio cociente = new Polinomio();
         Polinomio residuo = new Polinomio();
         
-        // Copia el polinomio p1 al residuo
+        
         Nodo apuntadorInicial = p1.getCabeza();
         while (apuntadorInicial != null) {
             residuo.agregar(new Nodo(apuntadorInicial.getCoeficiente(), apuntadorInicial.getExponente()));
             apuntadorInicial = apuntadorInicial.siguiente;
         }
     
-        // Mientras el residuo siga teniendo términos >= polinomio divisor
+        
         while (residuo.getCabeza() != null && residuo.getCabeza().getExponente() >= p2.getCabeza().getExponente()) {
-            // Calcula el término del cociente
+            
             double coeficienteCociente = residuo.getCabeza().getCoeficiente() / p2.getCabeza().getCoeficiente();
             int exponenteCociente = residuo.getCabeza().getExponente() - p2.getCabeza().getExponente();
     
-            // Agregar el nuevo término del cociente
+            
             if (exponenteCociente >= 0) {
                 Nodo nuevoTermino = new Nodo(coeficienteCociente, exponenteCociente);
                 cociente.agregar(nuevoTermino);
     
                 Polinomio producto = multiplicar_monomio(p2, nuevoTermino);
-                residuo = restar(residuo, producto); // Actualiza el residuo
-                // Puedes depurar aquí si es necesario
+                residuo = restar(residuo, producto); 
+                
             } else {
                 break;
             }
